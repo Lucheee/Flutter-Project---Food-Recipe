@@ -46,7 +46,7 @@ class RecipeApp extends StatelessWidget {
             style: TextStyle(fontSize: 28.0),
           ),
           ReviewSection(),
-          ProfileSection(address: "Bali, Indonesia", name: "Roberta Anny")
+          ProfileSection(address: "Bali, Indonesia", name: "Roberta Anny", image: 'assets/images/Location.png',)
         ]),
       ),
     );
@@ -61,7 +61,7 @@ class ReviewSection extends StatelessWidget {
     return const Row(children: [
       Icon(
         Icons.star,
-        color: Color.fromARGB(255, 240, 139, 6),
+        color: Color.fromARGB(255, 251, 182, 10)
       ),
       Text(
         '41',
@@ -76,25 +76,39 @@ class ReviewSection extends StatelessWidget {
 }
 
 class ProfileSection extends StatelessWidget {
-  const ProfileSection({super.key, required this.address, required this.name});
+  const ProfileSection({super.key, required this.address, required this.name, required this.image});
 
   final String name;
   final String address;
+  final String image;
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
+         
         Column(
+          
           children: [
             Text(
               name,
-              style: const TextStyle(fontSize: 24.0),
+              style: const TextStyle(fontWeight: FontWeight.bold),
             ),
-            Text(
-              address,
-              style: const TextStyle(fontSize: 24.0),
-            )
+            Row(
+              children: [
+                Image.network(
+                  image,
+                  width: 30.0,
+                  height: 30.0,
+                  fit: BoxFit.cover,
+                ),
+                const SizedBox(width: 5,
+                height: 10
+                ),
+                Text(address)
+              ],
+            ),
+            
           ],
         ),
       ],
