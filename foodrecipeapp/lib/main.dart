@@ -50,19 +50,15 @@ class RecipeApp extends StatelessWidget {
             SizedBox(
               height: 10,
             ),
-            ImageSection(
-              image: 'assets/images/image 13.png'
-            ),
-            SizedBox(
-              height: 20
-            ),
+            ImageSection(image: 'assets/images/image 13.png'),
+            SizedBox(height: 20),
             ReviewSection(),
             ProfileSection(
               address: "Bali, Indonesia",
               name: "Roberta Anny",
               image: 'assets/images/Location.png',
+              secondImage: 'assets/images/unsplash_Ij24Uq1sMwM.png'
             )
-          
           ]),
         ),
       ),
@@ -77,13 +73,16 @@ class ReviewSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Row(children: [
       Icon(Icons.star, color: Color.fromARGB(255, 251, 182, 10)),
+      SizedBox(
+        width: 5,
+      ),
       Text(
         '4,5',
-        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0),
+        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18.0),
       ),
       Text(
         " (300 Reviews)",
-        style: TextStyle(fontSize: 16.0),
+        style: TextStyle(fontSize: 18.0),
       )
     ]);
   }
@@ -94,48 +93,54 @@ class ProfileSection extends StatelessWidget {
       {super.key,
       required this.address,
       required this.name,
-      required this.image});
+      required this.image,
+      required this.secondImage
+      });
 
   final String name;
   final String address;
   final String image;
+  final String secondImage;
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Column(
-          children: [
-            Text(
-              name,
-              style:
-                  const TextStyle(fontWeight: FontWeight.bold, fontSize: 24.0),
-            ),
-
-            Row(
+    return  
+          Row(
+            
+          children: [ 
+            Image.network(secondImage, fit: BoxFit.cover),
+            const SizedBox(width: 10.0),
+            Column(
               children: [
-                Image.asset(
-                  image,
-                  width: 20.0,
-                  height: 25.0,
-                  fit: BoxFit.cover,
-                ),
-                const SizedBox(
-                  width: 5.0,
-                ),
                 Text(
-                  address,
-                  style: const TextStyle(fontSize: 18.0),
-                )
+                  name,
+                  style:
+                      const TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
+                ),
+                Row(
+                  children: [
+                    
+                    Image.asset(image, width: 20.0,
+                      height: 25.0,
+                      fit: BoxFit.cover,
+                    ),
+                    const SizedBox(
+                      width: 1.0,
+                    ),
+                    Text(
+                      address,
+                      style: const TextStyle(fontSize: 15.0),
+                    )
+                  ],
+                ),
+                
               ],
             ),
-            const SizedBox(
-            height: 10
-            ),
-          ],
-        ),
-      ],
-    );
+          ],);
+          
+        
+      
+    
   }
 }
 
@@ -146,15 +151,11 @@ class ImageSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return 
-    Center(
+    return Center(
       child: ClipRRect(
-        borderRadius:  BorderRadius.circular(20.0),
-        child : Image.asset(image, width:400, height:200, fit: BoxFit.cover),
-         ),   
-         );
-    
-  
-  
+        borderRadius: BorderRadius.circular(20.0),
+        child: Image.asset(image, width: 400, height: 200, fit: BoxFit.cover),
+      ),
+    );
   }
 }

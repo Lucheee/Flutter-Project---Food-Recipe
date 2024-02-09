@@ -62,6 +62,7 @@ flutter:
   assets:
     - assets/images/Location.png
     - assets/images/image 13.png
+    - assets/images/unsplash_Ij24Uq1sMwM.png
     #- images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
