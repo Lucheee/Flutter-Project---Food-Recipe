@@ -35,39 +35,37 @@ class RecipeApp extends StatelessWidget {
           children: [
             IconButton(onPressed: () {}, icon: const Icon(Icons.arrow_back)),
             IconButton(onPressed: () {}, icon: const Icon(Icons.more_horiz)),
-            
           ],
         ),
-        
-      )
-      
-      
-      ),
-      
-      body: const SingleChildScrollView( child :Padding(
-        padding: EdgeInsets.symmetric(horizontal: 30.0),
-        child: Center(
-          child:
-              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            Text(
-              "How to make french toast",
-              style: TextStyle(fontSize: 30.0, fontWeight: FontWeight.w600),
-            ),
-            SizedBox(
-              height: 25.0,
-            ),
-            ImageSection(image: 'assets/images/image 13.png'),
-            SizedBox(height: 20),
-            ReviewSection(),
-            SizedBox(height: 10),
-            ProfileSection(
-                address: "Bali, Indonesia",
-                name: "Roberta Anny",
-                image: 'assets/images/Location.png',
-                secondImage: 'assets/images/unsplash_Ij24Uq1sMwM.png')
-          ]),
+      )),
+      body: const SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 30.0),
+          child: Center(
+            child:
+                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              Text(
+                "How to make french toast",
+                style: TextStyle(fontSize: 30.0, fontWeight: FontWeight.w600),
+              ),
+              SizedBox(
+                height: 25.0,
+              ),
+              ImageSection(image: 'assets/images/image 13.png'),
+              SizedBox(height: 20),
+              ReviewSection(),
+              SizedBox(height: 10),
+              ProfileSection(
+                  address: "Bali, Indonesia",
+                  name: "Roberta Anny",
+                  image: 'assets/images/Location.png',
+                  secondImage: 'assets/images/unsplash_Ij24Uq1sMwM.png'),
+              SizedBox(height: 20.0),
+              IngredientSection()
+              
+            ]),
+          ),
         ),
-      ),
       ),
     );
   }
@@ -113,44 +111,43 @@ class ProfileSection extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Row(   
+        Row(
           children: [
             Image.asset(secondImage, fit: BoxFit.cover),
-            const SizedBox(width: 10.0),  
+            const SizedBox(width: 10.0),
             Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    name,
-                    style: const TextStyle(
-                        fontWeight: FontWeight.bold, fontSize: 19.0),
-                  ),
-                  Row(
-                    children: [
-                      Image.asset(
-                        image,
-                        width: 20.0,
-                        height: 25.0,
-                        fit: BoxFit.cover,
-                      ),
-                      const SizedBox(
-                        width: 7.0,
-                      ),
-                      Text(
-                        address,
-                        style: const TextStyle(fontSize: 15.0, color: Colors.grey),
-                      )
-                    ],
-                  ),
-                ],
-              ),
-            
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  name,
+                  style: const TextStyle(
+                      fontWeight: FontWeight.bold, fontSize: 19.0),
+                ),
+                Row(
+                  children: [
+                    Image.asset(
+                      image,
+                      width: 20.0,
+                      height: 25.0,
+                      fit: BoxFit.cover,
+                    ),
+                    const SizedBox(
+                      width: 7.0,
+                    ),
+                    Text(
+                      address,
+                      style:
+                          const TextStyle(fontSize: 15.0, color: Colors.grey),
+                    )
+                  ],
+                ),
+              ],
+            ),
             const SizedBox(
               width: 50.0,
             ),
           ],
         ),
-        
         Row(
           children: [
             ElevatedButton(
@@ -172,11 +169,8 @@ class ProfileSection extends StatelessWidget {
                 )),
           ],
         ),
-    
-    ],
+      ],
     );
-    
-    
   }
 }
 
@@ -191,6 +185,69 @@ class ImageSection extends StatelessWidget {
       child: ClipRRect(
         borderRadius: BorderRadius.circular(20.0),
         child: Image.asset(image, width: 400, height: 200, fit: BoxFit.cover),
+      ),
+    );
+  }
+}
+
+class IngredientSection extends StatelessWidget {
+  const IngredientSection({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Column(
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              "Ingredients",
+              style: TextStyle(fontWeight: FontWeight.w600, fontSize: 23.0),
+            ),
+            Text(
+              "5 items",
+              style: TextStyle(color: Colors.grey, fontSize: 18.0),
+            )
+          ],
+        ),
+        Row(
+          children: [Expanded(child: IngredientListSection(foodName: "Bread", gramSize: "200g", image: "assets/images/image 13.png"))],
+        )
+      ],
+    );
+  }
+}
+
+class IngredientListSection extends StatelessWidget {
+  const IngredientListSection({super.key, required this.foodName, required this.gramSize, required this.image});
+
+  final String foodName;
+  final String image;
+  final String gramSize;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration:  BoxDecoration(
+        color: const Color.fromARGB(255, 239, 237, 237),
+        borderRadius: BorderRadius.circular(10.0)
+      ),
+      height: 70.0,
+      child:  Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Row(
+              children: [
+                Image.asset(image),
+                const SizedBox(width: 10.0),
+                 Text(foodName)
+              ],
+            ),
+           Text(gramSize)
+          ],
+        ),
       ),
     );
   }
