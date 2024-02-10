@@ -51,7 +51,7 @@ class RecipeApp extends StatelessWidget {
               SizedBox(
                 height: 25.0,
               ),
-              ImageSection(image: 'assets/images/image 13.png', videoImage: 'assets/images/',),
+              ImageSection(image: 'assets/images/image 13.png', videoImage: 'assets/images/Play button.png',),
               SizedBox(height: 20),
               ReviewSection(),
               SizedBox(height: 10),
@@ -184,12 +184,17 @@ class ImageSection extends StatelessWidget {
     return Stack(
       alignment: Alignment.center,
       children: [
-        ClipRRect(
-        borderRadius: BorderRadius.circular(20.0),
-        child: Image.asset(image, width: 400, height: 200, fit: BoxFit.cover),
-        
-      ),
-      Image.asset(videoImage, fit: BoxFit.cover,)
+        Center(
+          child: ClipRRect(
+          borderRadius: BorderRadius.circular(20.0),
+          child: Image.asset(image, width: 400, height: 200, fit: BoxFit.cover),
+          
+                ),
+        ),
+      Image.network(videoImage, 
+      width: 50.0,
+      height: 50.0,
+      fit: BoxFit.cover,)
       ],
       
     );
