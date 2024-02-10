@@ -34,11 +34,17 @@ class RecipeApp extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             IconButton(onPressed: () {}, icon: const Icon(Icons.arrow_back)),
-            IconButton(onPressed: () {}, icon: const Icon(Icons.more_horiz))
+            IconButton(onPressed: () {}, icon: const Icon(Icons.more_horiz)),
+            
           ],
         ),
-      )),
-      body: const Padding(
+        
+      )
+      
+      
+      ),
+      
+      body: const SingleChildScrollView( child :Padding(
         padding: EdgeInsets.symmetric(horizontal: 30.0),
         child: Center(
           child:
@@ -48,19 +54,20 @@ class RecipeApp extends StatelessWidget {
               style: TextStyle(fontSize: 30.0, fontWeight: FontWeight.w600),
             ),
             SizedBox(
-              height: 10,
+              height: 25.0,
             ),
             ImageSection(image: 'assets/images/image 13.png'),
             SizedBox(height: 20),
             ReviewSection(),
+            SizedBox(height: 10),
             ProfileSection(
-              address: "Bali, Indonesia",
-              name: "Roberta Anny",
-              image: 'assets/images/Location.png',
-              secondImage: 'assets/images/unsplash_Ij24Uq1sMwM.png'
-            )
+                address: "Bali, Indonesia",
+                name: "Roberta Anny",
+                image: 'assets/images/Location.png',
+                secondImage: 'assets/images/unsplash_Ij24Uq1sMwM.png')
           ]),
         ),
+      ),
       ),
     );
   }
@@ -82,7 +89,7 @@ class ReviewSection extends StatelessWidget {
       ),
       Text(
         " (300 Reviews)",
-        style: TextStyle(fontSize: 18.0),
+        style: TextStyle(fontSize: 18.0, color: Colors.grey),
       )
     ]);
   }
@@ -94,8 +101,7 @@ class ProfileSection extends StatelessWidget {
       required this.address,
       required this.name,
       required this.image,
-      required this.secondImage
-      });
+      required this.secondImage});
 
   final String name;
   final String address;
@@ -104,42 +110,72 @@ class ProfileSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  
-          Row(
-            
-          children: [ 
-            Image.network(secondImage, fit: BoxFit.cover),
-            const SizedBox(width: 10.0),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Row(   
+          children: [
+            Image.asset(secondImage, fit: BoxFit.cover),
+            const SizedBox(width: 10.0),  
             Column(
-              children: [
-                Text(
-                  name,
-                  style:
-                      const TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
-                ),
-                Row(
-                  children: [
-                    
-                    Image.asset(image, width: 20.0,
-                      height: 25.0,
-                      fit: BoxFit.cover,
-                    ),
-                    const SizedBox(
-                      width: 1.0,
-                    ),
-                    Text(
-                      address,
-                      style: const TextStyle(fontSize: 15.0),
-                    )
-                  ],
-                ),
-                
-              ],
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    name,
+                    style: const TextStyle(
+                        fontWeight: FontWeight.bold, fontSize: 19.0),
+                  ),
+                  Row(
+                    children: [
+                      Image.asset(
+                        image,
+                        width: 20.0,
+                        height: 25.0,
+                        fit: BoxFit.cover,
+                      ),
+                      const SizedBox(
+                        width: 7.0,
+                      ),
+                      Text(
+                        address,
+                        style: const TextStyle(fontSize: 15.0, color: Colors.grey),
+                      )
+                    ],
+                  ),
+                ],
+              ),
+            
+            const SizedBox(
+              width: 50.0,
             ),
-          ],);
-          
+          ],
+        ),
         
-      
+        Row(
+          children: [
+            ElevatedButton(
+                onPressed: () {},
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.red,
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 20, horizontal: 20),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(
+                            15)) // Button background color
+                    ),
+                child: const Text(
+                  'Follow',
+                  style: TextStyle(
+                      color: Colors.white, // Text color
+                      fontSize: 15.0,
+                      fontWeight: FontWeight.w600),
+                )),
+          ],
+        ),
+    
+    ],
+    );
+    
     
   }
 }
