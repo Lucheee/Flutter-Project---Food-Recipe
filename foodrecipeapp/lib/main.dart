@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Food Recipe App',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
@@ -40,7 +40,7 @@ class RecipeApp extends StatelessWidget {
       )),
       body: const SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 30.0),
+          padding: EdgeInsets.symmetric(horizontal: 25.0),
           child: Center(
             child:
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -51,7 +51,7 @@ class RecipeApp extends StatelessWidget {
               SizedBox(
                 height: 25.0,
               ),
-              ImageSection(image: 'assets/images/image 13.png'),
+              ImageSection(image: 'assets/images/image 13.png', videoImage: 'assets/images/',),
               SizedBox(height: 20),
               ReviewSection(),
               SizedBox(height: 10),
@@ -62,7 +62,6 @@ class RecipeApp extends StatelessWidget {
                   secondImage: 'assets/images/unsplash_Ij24Uq1sMwM.png'),
               SizedBox(height: 20.0),
               IngredientSection()
-              
             ]),
           ),
         ),
@@ -175,17 +174,24 @@ class ProfileSection extends StatelessWidget {
 }
 
 class ImageSection extends StatelessWidget {
-  const ImageSection({super.key, required this.image});
+  const ImageSection({super.key, required this.image, required this.videoImage});
 
   final String image;
+  final String videoImage;
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: ClipRRect(
+    return Stack(
+      alignment: Alignment.center,
+      children: [
+        ClipRRect(
         borderRadius: BorderRadius.circular(20.0),
         child: Image.asset(image, width: 400, height: 200, fit: BoxFit.cover),
+        
       ),
+      Image.asset(videoImage, fit: BoxFit.cover,)
+      ],
+      
     );
   }
 }
@@ -202,7 +208,7 @@ class IngredientSection extends StatelessWidget {
           children: [
             Text(
               "Ingredients",
-              style: TextStyle(fontWeight: FontWeight.w600, fontSize: 23.0),
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 23.0),
             ),
             Text(
               "5 items",
@@ -210,16 +216,54 @@ class IngredientSection extends StatelessWidget {
             )
           ],
         ),
+        SizedBox(height: 20.0),
         Row(
-          children: [Expanded(child: IngredientListSection(foodName: "Bread", gramSize: "200g", image: "assets/images/image 13.png"))],
-        )
+          children: [
+            Expanded(
+                child: IngredientListSection(
+                    foodName: "Bread",
+                    gramSize: "200g",
+                    image: "assets/images/fooditem1.png")),
+          ],
+        ),
+        SizedBox(
+          height: 17.0,
+        ),
+        Row(
+          children: [
+            Expanded(
+                child: IngredientListSection(
+                    foodName: "Eggs",
+                    gramSize: "200g",
+                    image: "assets/images/fooditem2.png")),
+          ],
+        ),
+        SizedBox(
+          height: 17.0,
+        ),
+        Row(
+          children: [
+            Expanded(
+                child: IngredientListSection(
+                    foodName: "Milk",
+                    gramSize: "200g",
+                    image: "assets/images/fooditem1.png")),
+          ],
+        ),
+        SizedBox(
+          height: 17.0,
+        ),
       ],
     );
   }
 }
 
 class IngredientListSection extends StatelessWidget {
-  const IngredientListSection({super.key, required this.foodName, required this.gramSize, required this.image});
+  const IngredientListSection(
+      {super.key,
+      required this.foodName,
+      required this.gramSize,
+      required this.image});
 
   final String foodName;
   final String image;
@@ -228,24 +272,41 @@ class IngredientListSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration:  BoxDecoration(
-        color: const Color.fromARGB(255, 239, 237, 237),
-        borderRadius: BorderRadius.circular(10.0)
-      ),
-      height: 70.0,
-      child:  Padding(
-        padding: const EdgeInsets.all(20.0),
+      decoration: BoxDecoration(
+          color: const Color.fromARGB(255, 239, 237, 237),
+          borderRadius: BorderRadius.circular(15.0)),
+      child: Padding(
+        padding: const EdgeInsets.all(15.0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Row(
               children: [
-                Image.asset(image),
-                const SizedBox(width: 10.0),
-                 Text(foodName)
+                Container(
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12.0),
+                      color: Colors.white),
+                  width: 60.0,
+                  height: 60.0,
+                  child: Center(
+                    child: Image.asset(
+                      image,
+                      width: 35.0,
+                      height: 35.0,
+                      fit: BoxFit.contain,
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 17.0),
+                Text(foodName,
+                    style: const TextStyle(
+                        fontWeight: FontWeight.bold, fontSize: 20.0))
               ],
             ),
-           Text(gramSize)
+            Text(
+              gramSize,
+              style: const TextStyle(fontSize: 18.0, color: Colors.grey),
+            )
           ],
         ),
       ),
