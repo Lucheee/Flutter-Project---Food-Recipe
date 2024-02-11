@@ -13,10 +13,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Food Recipe App',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-        fontFamily: "Poppins"
-      ),
+          colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 251, 251, 252)),
+          useMaterial3: true,
+          fontFamily: "Poppins"
+          ),
       home: const RecipeApp(),
     );
   }
@@ -30,7 +30,7 @@ class RecipeApp extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
           title: Padding(
-        padding: const EdgeInsets.only(top: 20.0),
+        padding: const EdgeInsets.only(top: 10.0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -47,13 +47,16 @@ class RecipeApp extends StatelessWidget {
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
               Text(
                 "How to make french toast",
-                style: TextStyle(fontSize: 30.0, fontWeight: FontWeight.w600),
+                style: TextStyle(fontSize: 30.0, fontWeight: FontWeight.w600 ),
               ),
               SizedBox(
-                height: 25.0,
+                height: 20.0,
               ),
-              ImageSection(image: 'assets/images/image 13.png', videoImage: 'assets/images/Play button.png',),
-              SizedBox(height: 20),
+              ImageSection(
+                image: 'assets/images/image 13.png',
+                videoImage: 'assets/images/Play button.png',
+              ),
+              SizedBox(height: 15),
               ReviewSection(),
               SizedBox(height: 10),
               ProfileSection(
@@ -61,7 +64,7 @@ class RecipeApp extends StatelessWidget {
                   name: "Roberta Anny",
                   image: 'assets/images/Location.png',
                   secondImage: 'assets/images/unsplash_Ij24Uq1sMwM.png'),
-              SizedBox(height: 20.0),
+              SizedBox(height: 13.0),
               IngredientSection()
             ]),
           ),
@@ -87,7 +90,7 @@ class ReviewSection extends StatelessWidget {
       ),
       Text(
         " (300 Reviews)",
-        style: TextStyle(fontSize: 18.0, color: Colors.grey),
+        style: TextStyle(fontSize: 17.0, color: Color.fromARGB(255, 166, 165, 165), fontWeight: FontWeight.normal,  fontFamily: "Poppins-Thin"),
       )
     ]);
   }
@@ -121,51 +124,58 @@ class ProfileSection extends StatelessWidget {
                 Text(
                   name,
                   style: const TextStyle(
-                      fontWeight: FontWeight.bold, fontSize: 19.0),
+                      fontWeight: FontWeight.w400, fontFamily:"Poppins", fontSize: 18.0),
                 ),
                 Row(
                   children: [
                     Image.asset(
                       image,
                       width: 20.0,
-                      height: 25.0,
+                      height: 20.0,
                       fit: BoxFit.cover,
                     ),
                     const SizedBox(
-                      width: 7.0,
+                      width: 5.0,
                     ),
                     Text(
                       address,
-                      style:
-                          const TextStyle(fontSize: 15.0, color: Colors.grey),
+                      style: const TextStyle(
+                          fontSize: 17.0,
+                          color: Color.fromARGB(255, 166, 165, 165),
+                          fontWeight: FontWeight.normal,
+                          fontFamily: "Poppins-Thin"),
                     )
                   ],
                 ),
               ],
             ),
-            const SizedBox(
-              width: 50.0,
-            ),
+            //
           ],
         ),
         Row(
           children: [
-            ElevatedButton(
+            TextButton(
                 onPressed: () {},
-                style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.red,
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 20, horizontal: 20),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(
-                            15)) // Button background color
-                    ),
-                child: const Text(
-                  'Follow',
-                  style: TextStyle(
-                      color: Colors.white, // Text color
+                style: TextButton.styleFrom(
+                  backgroundColor: Colors.red,
+
+                  // padding: const EdgeInsets.symmetric(
+                  //     vertical: 10, horizontal: 10),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12)),
+                  // Button background color
+                ),
+                child: const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 5.0, vertical: 3.0),
+                  child: Text(
+                    'Follow',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontFamily: "Poppins-Thin",
                       fontSize: 15.0,
-                      fontWeight: FontWeight.w600),
+                      fontWeight: FontWeight.normal // Text color
+                    ),
+                  ),
                 )),
           ],
         ),
@@ -175,7 +185,8 @@ class ProfileSection extends StatelessWidget {
 }
 
 class ImageSection extends StatelessWidget {
-  const ImageSection({super.key, required this.image, required this.videoImage});
+  const ImageSection(
+      {super.key, required this.image, required this.videoImage});
 
   final String image;
   final String videoImage;
@@ -187,17 +198,18 @@ class ImageSection extends StatelessWidget {
       children: [
         Center(
           child: ClipRRect(
-          borderRadius: BorderRadius.circular(20.0),
-          child: Image.asset(image, width: 400, height: 200, fit: BoxFit.cover),
-          
-                ),
+            borderRadius: BorderRadius.circular(20.0),
+            child:
+                Image.asset(image, width: 400, height: 200, fit: BoxFit.cover),
+          ),
         ),
-      Image.asset(videoImage, 
-      width: 50.0,
-      height: 50.0,
-      fit: BoxFit.cover,)
+        Image.asset(
+          videoImage,
+          width: 50.0,
+          height: 50.0,
+          fit: BoxFit.cover,
+        )
       ],
-      
     );
   }
 }
@@ -218,11 +230,15 @@ class IngredientSection extends StatelessWidget {
             ),
             Text(
               "5 items",
-              style: TextStyle(color: Colors.grey, fontSize: 18.0),
+              style: TextStyle(
+                  fontSize: 18.0,
+                  color: Color.fromARGB(255, 166, 165, 165),
+                  fontWeight: FontWeight.normal,
+                  fontFamily: "Poppins-Thin"),
             )
           ],
         ),
-        SizedBox(height: 20.0),
+        SizedBox(height: 12.0),
         Row(
           children: [
             Expanded(
@@ -233,7 +249,7 @@ class IngredientSection extends StatelessWidget {
           ],
         ),
         SizedBox(
-          height: 17.0,
+          height: 10.0,
         ),
         Row(
           children: [
@@ -245,7 +261,7 @@ class IngredientSection extends StatelessWidget {
           ],
         ),
         SizedBox(
-          height: 17.0,
+          height: 10.0,
         ),
         Row(
           children: [
@@ -257,7 +273,7 @@ class IngredientSection extends StatelessWidget {
           ],
         ),
         SizedBox(
-          height: 17.0,
+          height: 10.0,
         ),
       ],
     );
@@ -279,7 +295,7 @@ class IngredientListSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          color: const Color.fromARGB(255, 239, 237, 237),
+          color:  const Color.fromARGB(255, 234, 233, 233),
           borderRadius: BorderRadius.circular(15.0)),
       child: Padding(
         padding: const EdgeInsets.all(15.0),
@@ -311,7 +327,11 @@ class IngredientListSection extends StatelessWidget {
             ),
             Text(
               gramSize,
-              style: const TextStyle(fontSize: 18.0, color: Colors.grey),
+              style: const TextStyle(
+                  fontSize: 18.0,
+                  color: Color.fromARGB(255, 166, 165, 165),
+                  fontWeight: FontWeight.normal,
+                  fontFamily: "Poppins-Thin"),
             )
           ],
         ),
