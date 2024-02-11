@@ -15,6 +15,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
+        fontFamily: "Poppins"
       ),
       home: const RecipeApp(),
     );
@@ -191,7 +192,7 @@ class ImageSection extends StatelessWidget {
           
                 ),
         ),
-      Image.network(videoImage, 
+      Image.asset(videoImage, 
       width: 50.0,
       height: 50.0,
       fit: BoxFit.cover,)
