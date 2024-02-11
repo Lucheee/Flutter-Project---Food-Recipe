@@ -13,8 +13,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Food Recipe App',
       theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 251, 251, 252)),
-          useMaterial3: true,
           fontFamily: "Poppins"
           ),
       home: const RecipeApp(),
@@ -79,10 +77,11 @@ class ReviewSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Row(children: [
+    return const Row(
+      children: [
       Icon(Icons.star, color: Color.fromARGB(255, 251, 182, 10)),
       SizedBox(
-        width: 5,
+        width: 5.0,
       ),
       Text(
         '4,5',
@@ -116,8 +115,11 @@ class ProfileSection extends StatelessWidget {
       children: [
         Row(
           children: [
+            //Profile picture
             Image.asset(secondImage, fit: BoxFit.cover),
             const SizedBox(width: 10.0),
+
+            //User name and address
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -128,6 +130,7 @@ class ProfileSection extends StatelessWidget {
                 ),
                 Row(
                   children: [
+                    //Location image
                     Image.asset(
                       image,
                       width: 20.0,
@@ -152,15 +155,11 @@ class ProfileSection extends StatelessWidget {
             //
           ],
         ),
-        Row(
-          children: [
+        //Follow button
             TextButton(
                 onPressed: () {},
                 style: TextButton.styleFrom(
                   backgroundColor: Colors.red,
-
-                  // padding: const EdgeInsets.symmetric(
-                  //     vertical: 10, horizontal: 10),
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12)),
                   // Button background color
@@ -178,8 +177,8 @@ class ProfileSection extends StatelessWidget {
                   ),
                 )),
           ],
-        ),
-      ],
+        
+      
     );
   }
 }
