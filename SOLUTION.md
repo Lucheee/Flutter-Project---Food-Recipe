@@ -21,10 +21,10 @@ Flutter
   git clone https://github.com/Lucheee/Flutter-Project---Food-Recipe.git
 
 - Navigate to the project directory:
-  cd 
+  cd foodrecipeapp
 
-- Run the project
-  flutter run
+- Run the project:
+  Flutter run
 
 
 
