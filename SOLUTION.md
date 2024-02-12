@@ -20,5 +20,11 @@ Flutter
 - Clone the Repository:
   git clone https://github.com/Lucheee/Flutter-Project---Food-Recipe.git
 
+- Navigate to the project directory:
+  cd 
+
+- Run the project
+  flutter run
+
 
 
