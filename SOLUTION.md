@@ -26,5 +26,13 @@ Flutter
 - Run the project:
   Flutter run
 
+### Features
+
+- Detailed Instructions: Clear and concise instructions to help you make French Toast with ease.
+
+- Ingredients List: A list of ingredients required for the recipe, making it easy for you to gather everything you need.
+
+- Beautiful UI: An attractive and user-friendly interface designed with Flutter.
+
 
 
